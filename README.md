@@ -8,9 +8,9 @@
 		- Flowcharts
 		- Technical Writing
 ## Background Context
- Write your own printf function.
+* Write your own printf function.
 ![kris&jul](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-low_level_programming/228/printf.png)
-^ In this picture, Kris, and Jul
+ ^ In this picture, Kris, and Jul
 
 Resources
 Read or watch:
