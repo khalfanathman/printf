@@ -234,24 +234,26 @@ specifier get_specifier(char **format, va_list list)
 		spec.zerox = 1;
 	if (spec.length == 10)
 		spec.specifier = 'z';
-	switch (spec.specifier)
-	{
-	case '%': case 's': case 'c': case 'i': case 'd':
-	case 'x': case 'X': case 'b': case 'o': case 'u':
-	case 'R': case 'r': case 'S': case 'p':
-		(*format)++;
-		break;
-	case 0:
-		spec.specifier  = 'y';
-		if (spec.length == 0)
-			break;
-	default:
-		*format = start;
-		if (spec.length != 0)
-			(*format)++;
-		spec.specifier = '%';
-		break;
-	}
+if (spec.specifier == '%' || spec.specifier == 's' || spec.specifier == 'c' ||
+    spec.specifier == 'i' || spec.specifier == 'd' || spec.specifier == 'x' ||
+    spec.specifier == 'X' || spec.specifier == 'b' || spec.specifier == 'o' ||
+    spec.specifier == 'u' || spec.specifier == 'R' || spec.specifier == 'r' ||
+    spec.specifier == 'S' || spec.specifier == 'p') {
+  (*format)++;
+} else if (spec.specifier == 0) {
+  spec.specifier = 'y';
+  if (spec.length != 0) {
+    (*format)++;
+  }
+} else {
+  *format = start;
+  if (spec.length != 0) {
+    (*format)++;
+  }
+  spec.specifier = '%';
+}
+
+
 	return (spec);
 }
 
